@@ -1,1 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Catalog | Artistic Stitcher</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
+body{
+
+background:#0b0b0b;
+color:white;
+
+}
+
+header{
+
+position:sticky;
+top:0;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 7%;
+
+background:#111;
+
+border-bottom:1px solid #222;
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:30px;
+font-weight:900;
+letter-spacing:3px;
+
+}
+
+.logo span{
+
+color:#D4AF37;
+
+}
+
+nav{
+
+display:flex;
+gap:30px;
+
+}
+
+nav a{
+
+color:white;
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#D4AF37;
+
+}
+
+.right{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.cart{
+
+background:#D4AF37;
+color:black;
+
+padding:10px 18px;
+
+border-radius:8px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.hero{
+
+padding:70px 8%;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:55px;
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:18px;
+color:#bbb;
+
+max-width:700px;
+margin:auto;
+
+line-height:1.8;
+
+}
+
+.filters{
+
+margin:50px auto;
+
+display:flex;
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:20px;
+
+}
+
+.filters input{
+
+width:280px;
+
+padding:14px;
+
+background:#181818;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+}
+
+.filters select{
+
+padding:14px;
+
+background:#181818;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:30px;
+
+padding:40px 8%;
+
+}
+
+.product{
+
+background:#161616;
+
+border-radius:18px;
+
+overflow:hidden;
+
+transition:.35s;
+
+}
+
+.product:hover{
+
+transform:translateY(-8px);
+
+}
+
+.product img{
+
+width:100%;
+height:360px;
+
+object-fit:cover;
+
+}
+
+.info{
+
+padding:22px;
+
+}
+
+.name{
+
+font-size:23px;
+font-weight:700;
+
+}
+
+.category{
+
+margin-top:8px;
+
+font-size:14px;
+
+color:#999;
+
+}
+
+.price{
+
+margin-top:15px;
+
+font-size:24px;
+
+color:#D4AF37;
+
+font-weight:700;
+
+}
+
+.stock{
+
+margin-top:12px;
+
+font-size:15px;
+
+color:#73ff8f;
+
+}
+
+button{
+
+margin-top:20px;
+
+width:100%;
+
+padding:15px;
+
+background:#D4AF37;
+
+border:none;
+
+font-weight:bold;
+
+cursor:pointer;
+
+font-size:16px;
+
+}
+
+button:hover{
+
+background:#ffd95d;
+
+}
+
+footer{
+
+margin-top:80px;
+
+padding:50px;
+
+text-align:center;
+
+color:#777;
+
+background:#111;
+
+}
+
+@media(max-width:850px){
+
+header{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.hero h1{
+
+font-size:40px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+ARTISTIC <span>STITCHER</span>
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="catalog.html">Catalog</a>
+
+<a href="cart.html">Cart</a>
+
+</nav>
+
+<div class="right">
+
+<div class="cart">
+
+🛒 <span id="cartCount">0</span>
+
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<h1>Catalog</h1>
+
+<p>
+
+Browse every available piece.
+Items automatically disappear or display Sold Out when inventory reaches zero.
+
+</p>
+
+<div class="filters">
+
+<input
+id="search"
+type="text"
+placeholder="Search Clothing">
+
+<select id="categoryFilter">
+
+<option value="all">
+
+All Categories
+
+</option>
+
+</select>
+
+<select id="sort">
+
+<option value="newest">
+
+Newest
+
+</option>
+
+<option value="priceLow">
+
+Price Low → High
+
+</option>
+
+<option value="priceHigh">
+
+Price High → Low
+
+</option>
+
+<option value="alphabetical">
+
+Alphabetical
+
+</option>
+
+</select>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="grid" id="productGrid">
+
+<!-- Products from Supabase appear here -->
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Artistic Stitcher
+
+</footer>
+<script type="module">
+
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+    "YOUR_SUPABASE_URL",
+    "YOUR_SUPABASE_ANON_KEY"
+);
+
+let products = [];
+let categories = [];
+
+const grid = document.getElementById("productGrid");
+const search = document.getElementById("search");
+const categoryFilter = document.getElementById("categoryFilter");
+const sort = document.getElementById("sort");
+
+loadCategories();
+loadProducts();
+updateCartCount();
+
+async function loadCategories(){
+
+    const { data, error } = await supabase
+        .from("categories")
+        .select("*")
+        .order("name");
+
+    if(error){
+        console.error(error);
+        return;
+    }
+
+    categories = data;
+
+    data.forEach(category=>{
+
+        const option = document.createElement("option");
+
+        option.value = category.id;
+        option.textContent = category.name;
+
+        categoryFilter.appendChild(option);
+
+    });
+
+}
+
+async function loadProducts(){
+
+    const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .order("created_at",{ascending:false});
+
+    if(error){
+        console.error(error);
+        return;
+    }
+
+    products = data;
+
+    renderProducts();
+
+}
+
+function renderProducts(){
+
+    let filtered = [...products];
+
+    const searchValue = search.value.toLowerCase();
+
+    if(searchValue){
+
+        filtered = filtered.filter(product=>
+
+            product.name.toLowerCase().includes(searchValue)
+
+        );
+
+    }
+
+    if(categoryFilter.value!="all"){
+
+        filtered = filtered.filter(product=>
+
+            String(product.category_id)===categoryFilter.value
+
+        );
+
+    }
+
+    switch(sort.value){
+
+        case "priceLow":
+
+            filtered.sort((a,b)=>a.price-b.price);
+
+            break;
+
+        case "priceHigh":
+
+            filtered.sort((a,b)=>b.price-a.price);
+
+            break;
+
+        case "alphabetical":
+
+            filtered.sort((a,b)=>a.name.localeCompare(b.name));
+
+            break;
+
+    }
+
+    grid.innerHTML="";
+
+    filtered.forEach(product=>{
+
+        const category = categories.find(c=>c.id===product.category_id);
+
+        const soldOut = product.quantity<=0;
+
+        grid.innerHTML += `
+
+        <div class="product">
+
+            <img src="${product.images[0]}" alt="${product.name}">
+
+            <div class="info">
+
+                <div class="name">${product.name}</div>
+
+                <div class="category">
+                    ${category ? category.name : "Uncategorized"}
+                </div>
+
+                <div class="price">
+                    $${product.price}
+                </div>
+
+                <div class="stock">
+
+                    ${
+                        soldOut
+                        ? "❌ SOLD OUT"
+                        : "Only ${product.quantity} Remaining"
+                    }
+
+                </div>
+
+                <button onclick="viewProduct('${product.id}')">
+
+                    ${
+                        soldOut
+                        ? "View Product"
+                        : "View Item"
+                    }
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+window.viewProduct=function(id){
+
+    window.location.href=`product.html?id=${id}`;
+
+}
+
+search.addEventListener("input",renderProducts);
+
+categoryFilter.addEventListener("change",renderProducts);
+
+sort.addEventListener("change",renderProducts);
+
+function updateCartCount(){
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    document.getElementById("cartCount").textContent = cart.length;
+
+}
+
+</script>
+
+</body>
+</html>

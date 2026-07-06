@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Artistic Stitcher | Limited Drops</title>
+<title>Artistic Stitcher</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,185 +18,438 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Inter,sans-serif;
+font-family:'Inter',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-background:#090909;
+
+background:#0a0a0a;
 color:white;
-overflow-x:hidden;
+
 }
 
 header{
+
 position:fixed;
+top:0;
+left:0;
+
 width:100%;
-padding:25px 10%;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-backdrop-filter:blur(15px);
-background:rgba(0,0,0,.45);
+
+padding:25px 8%;
+
+background:rgba(0,0,0,.65);
+
+backdrop-filter:blur(18px);
+
 z-index:999;
+
 }
 
 .logo{
-font-size:28px;
-font-weight:800;
-letter-spacing:3px;
+
+font-size:30px;
+font-weight:900;
+letter-spacing:4px;
+
+}
+
+.logo span{
+
+color:#d4af37;
+
+}
+
+nav{
+
+display:flex;
+gap:35px;
+
 }
 
 nav a{
-margin-left:30px;
-color:white;
+
 text-decoration:none;
+color:white;
 transition:.3s;
+
 }
 
 nav a:hover{
-color:#e2b13c;
+
+color:#d4af37;
+
+}
+
+.icons{
+
+display:flex;
+gap:18px;
+
+}
+
+.icon{
+
+font-size:22px;
+cursor:pointer;
+
 }
 
 .hero{
+
 height:100vh;
+
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
+
 text-align:center;
-padding:40px;
+
+padding:30px;
+
 background:
-linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
-url("https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1800&q=80");
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.8)),
+url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1900&q=80");
+
 background-size:cover;
 background-position:center;
+
 }
 
 .hero h1{
-font-size:70px;
+
+font-size:80px;
 font-weight:900;
-margin-bottom:20px;
+letter-spacing:5px;
+
 }
 
 .hero p{
+
+margin-top:20px;
 font-size:20px;
-max-width:650px;
-margin:auto;
 color:#ddd;
+max-width:700px;
+
+line-height:1.8;
+
 }
 
 .hero button{
+
 margin-top:40px;
+
 padding:18px 50px;
-border:none;
-background:#e2b13c;
+
 font-size:18px;
+
+border:none;
+
+background:#d4af37;
+
 cursor:pointer;
-font-weight:bold;
-transition:.3s;
+
+font-weight:700;
+
+transition:.35s;
+
 }
 
 .hero button:hover{
-transform:scale(1.05);
+
+transform:translateY(-5px);
+
 }
 
 section{
-padding:90px 10%;
+
+padding:90px 8%;
+
 }
 
-.title{
-font-size:42px;
-margin-bottom:50px;
+.section-title{
+
 text-align:center;
+font-size:42px;
+margin-bottom:60px;
+
 }
 
-.products{
+.categories{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
 }
 
-.card{
-background:#181818;
+.category{
+
+height:260px;
+
 border-radius:18px;
+
 overflow:hidden;
-transition:.4s;
+
 position:relative;
+
+cursor:pointer;
+
+transition:.3s;
+
 }
 
-.card:hover{
-transform:translateY(-10px);
+.category:hover{
+
+transform:scale(1.02);
+
 }
 
-.card img{
+.category img{
+
 width:100%;
-height:400px;
+height:100%;
+
 object-fit:cover;
+
 }
 
-.info{
-padding:25px;
-}
+.overlay{
 
-.badge{
 position:absolute;
-top:15px;
-right:15px;
-background:#d92f2f;
-padding:8px 14px;
-border-radius:30px;
-font-size:13px;
-font-weight:bold;
+
+bottom:0;
+
+width:100%;
+
+padding:20px;
+
+background:linear-gradient(transparent,rgba(0,0,0,.9));
+
+font-size:28px;
+
+font-weight:700;
+
+}
+
+.featured{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:35px;
+
+}
+
+.product{
+
+background:#171717;
+
+border-radius:18px;
+
+overflow:hidden;
+
+transition:.3s;
+
+}
+
+.product:hover{
+
+transform:translateY(-8px);
+
+}
+
+.product img{
+
+width:100%;
+height:380px;
+
+object-fit:cover;
+
+}
+
+.product-info{
+
+padding:25px;
+
+}
+
+.product h3{
+
+margin-bottom:12px;
+
 }
 
 .price{
+
+color:#d4af37;
+
 font-size:24px;
+
 margin:15px 0;
-color:#e2b13c;
+
 }
 
-.buy{
+.stock{
+
+color:#71ff87;
+
+font-size:14px;
+
+margin-bottom:15px;
+
+}
+
+button.buy{
+
 width:100%;
+
 padding:15px;
-background:#e2b13c;
+
+background:#d4af37;
+
 border:none;
+
 font-weight:bold;
+
 cursor:pointer;
+
 }
 
-.countdown{
-display:flex;
-justify-content:center;
-gap:30px;
-font-size:28px;
-margin-top:40px;
+.about{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+
 }
 
-.time{
-text-align:center;
+.about img{
+
+width:100%;
+
+border-radius:18px;
+
+}
+
+.about h2{
+
+font-size:42px;
+
+margin-bottom:20px;
+
+}
+
+.about p{
+
+line-height:2;
+
+color:#ccc;
+
 }
 
 footer{
-padding:40px;
+
+padding:50px;
+
 text-align:center;
-color:#888;
+
+background:#111;
+
+color:#999;
+
+margin-top:60px;
+
+}
+
+footer a{
+
+color:#d4af37;
+
+text-decoration:none;
+
+}
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:52px;
+
+}
+
+.about{
+
+grid-template-columns:1fr;
+
+}
+
+header{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
 }
 
 </style>
 
 </head>
+
 <body>
 
 <header>
 
 <div class="logo">
-ARTISTIC STITCHER
+
+ARTISTIC <span>STITCHER</span>
+
 </div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">Drops</a>
+
+<a href="index.html">Home</a>
+
+<a href="catalog.html">Catalog</a>
+
+<a href="#">Featured</a>
+
 <a href="#">About</a>
-<a href="#">Contact</a>
+
 </nav>
+
+<div class="icons">
+
+<div class="icon">🛒</div>
+
+<div class="icon">👤</div>
+
+</div>
 
 </header>
 
@@ -200,15 +457,19 @@ ARTISTIC STITCHER
 
 <div>
 
-<h1>LIMITED DROP 001</h1>
+<h1>WEAR ART.</h1>
 
 <p>
-Every garment is individually numbered.
-Once sold out, it will never return.
+
+One-of-a-kind clothing created in limited quantities.
+Once an item sells out, it may never return.
+
 </p>
 
-<button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
-SHOP NOW
+<button onclick="window.location='catalog.html'">
+
+SHOP COLLECTION
+
 </button>
 
 </div>
@@ -217,123 +478,124 @@ SHOP NOW
 
 <section>
 
-<h2 class="title">
-Drop Ends In
+<h2 class="section-title">
+
+Shop by Category
+
 </h2>
 
-<div class="countdown">
+<div class="categories">
 
-<div class="time">
-<div id="days">00</div>
-<small>Days</small>
+<div class="category">
+
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80">
+
+<div class="overlay">
+
+Shirts
+
 </div>
 
-<div class="time">
-<div id="hours">00</div>
-<small>Hours</small>
 </div>
 
-<div class="time">
-<div id="minutes">00</div>
-<small>Minutes</small>
+<div class="category">
+
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
+
+<div class="overlay">
+
+Hoodies
+
 </div>
 
-<div class="time">
-<div id="seconds">00</div>
-<small>Seconds</small>
+</div>
+
+<div class="category">
+
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80">
+
+<div class="overlay">
+
+Jackets
+
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<section id="shop">
+<section>
 
-<h2 class="title">
-Current Collection
+<h2 class="section-title">
+
+Featured Products
+
 </h2>
 
-<div class="products">
+<div class="featured">
 
-<div class="card">
-
-<div class="badge">
-18 LEFT
-</div>
+<div class="product">
 
 <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
 
-<div class="info">
+<div class="product-info">
 
 <h3>Signature Hoodie</h3>
 
-<div class="price">$95</div>
+<div class="price">$85</div>
 
-<p>
-Heavyweight cotton with embroidered Artistic Stitcher logo.
-</p>
+<div class="stock">Only 1 Available</div>
 
-<br>
+<button class="buy">
 
-<button class="buy" onclick="buyProduct(1)">
-Buy Now
+View Product
+
 </button>
 
 </div>
 
 </div>
 
-<div class="card">
-
-<div class="badge">
-7 LEFT
-</div>
+<div class="product">
 
 <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80">
 
-<div class="info">
+<div class="product-info">
 
 <h3>Studio Tee</h3>
 
-<div class="price">$55</div>
+<div class="price">$45</div>
 
-<p>
-Premium oversized fit.
-Limited edition print.
-</p>
+<div class="stock">Only 1 Available</div>
 
-<br>
+<button class="buy">
 
-<button class="buy" onclick="buyProduct(2)">
-Buy Now
+View Product
+
 </button>
 
 </div>
 
 </div>
 
-<div class="card">
-
-<div class="badge">
-12 LEFT
-</div>
+<div class="product">
 
 <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80">
 
-<div class="info">
+<div class="product-info">
 
 <h3>Canvas Jacket</h3>
 
-<div class="price">$145</div>
+<div class="price">$120</div>
 
-<p>
-Numbered release with custom woven labels.
-</p>
+<div class="stock">Only 1 Available</div>
 
-<br>
+<button class="buy">
 
-<button class="buy" onclick="buyProduct(3)">
-Buy Now
+View Product
+
 </button>
 
 </div>
@@ -341,6 +603,28 @@ Buy Now
 </div>
 
 </div>
+
+</section>
+
+<section class="about">
+
+<div>
+
+<h2>
+
+Our Mission
+
+</h2>
+
+<p>
+
+Artistic Stitcher creates premium clothing that blends craftsmanship with individuality. Every design is produced in intentionally limited quantities, making each release feel unique. Managers curate featured collections while customers can discover exclusive pieces that won't be mass produced.
+
+</p>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80">
 
 </section>
 
@@ -350,70 +634,17 @@ Buy Now
 
 <br><br>
 
-Powered by GitHub Pages • Supabase • Stripe
+Built with GitHub Pages • Supabase • Stripe
 
 </footer>
 
 <script>
 
-// Countdown
+// Placeholder
 
-const target = new Date("December 31, 2026 23:59:59").getTime();
+// Featured products will later be loaded from Supabase.
 
-setInterval(()=>{
-
-const now = new Date().getTime();
-
-const distance = target-now;
-
-document.getElementById("days").innerHTML=Math.floor(distance/(1000*60*60*24));
-
-document.getElementById("hours").innerHTML=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-
-document.getElementById("minutes").innerHTML=Math.floor((distance%(1000*60*60))/(1000*60));
-
-document.getElementById("seconds").innerHTML=Math.floor((distance%(1000*60))/1000);
-
-},1000);
-
-
-// Stripe Checkout Placeholder
-
-function buyProduct(id){
-
-// Eventually replace with Stripe Checkout Session
-
-window.location.href=`/checkout.html?id=${id}`;
-
-}
-
-
-// ----------------------------
-// Supabase Example
-// ----------------------------
-
-// import { createClient }
-// from
-// https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm
-
-/*
-const supabase=createClient(
-'https://YOURPROJECT.supabase.co',
-'YOUR_ANON_KEY'
-);
-
-async function loadProducts(){
-
-const {data}=await supabase
-.from("products")
-.select("*");
-
-console.log(data);
-
-}
-*/
-
-// Load products from Supabase here.
+// Categories will also be loaded dynamically.
 
 </script>
 
